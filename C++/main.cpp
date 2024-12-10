@@ -4,6 +4,7 @@
 #include <vector>
 #include <cstring>
 #include <stdio.h>
+#include <cstdlib>
 #include <conio.h>
 #include <stdlib.h>
 #include <windows.h>
@@ -12,7 +13,7 @@ using namespace std;
 
 #pragma region VARIABLES
 #pragma endregion
-string version = "0.1.0";
+string version = "0.2.0";
 string menuTitle = "";
 int columns, rows, menuOption = 0, menu = 0;
 bool menuLoop = true;
@@ -70,6 +71,19 @@ void drawMenu( const vector<pair<string, int>>& vector ) {
 
 }
 
+#pragma region PROGRAM ACTIONS
+#pragma endregion
+
+void program_actions(int x) {
+
+    switch (x) {
+        case -1: system("CLS"); exit(0);
+        
+        default: printf("Error\n"); break;
+    }
+
+}
+
 #pragma region MAIN CODE
 #pragma endregion
 int main() {
@@ -123,11 +137,18 @@ int main() {
 
             }
 
-            Sleep(50); 
+            if ( GetAsyncKeyState(VK_RETURN) & 0x8000) {
+
+                // printf("%s\n", ().c_str() );
+                program_actions(menuActions[menuOption].second);
+                
+                break; 
+
+            }
+
+            Sleep(100); 
 
         }
-
-        // TODO ADD RETURN TO SELECT OPTION
 
     }
 
